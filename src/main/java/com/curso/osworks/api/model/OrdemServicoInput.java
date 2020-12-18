@@ -1,5 +1,8 @@
 package com.curso.osworks.api.model;
 
+import com.curso.osworks.domain.model.Cliente;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -16,6 +19,12 @@ public class OrdemServicoInput {
     @Valid
     @NotNull
     private ClienteIdInput cliente;
+
+    @JsonProperty("cliente")
+    private void unpackNested(Long  cliente) {
+        this.cliente = new ClienteIdInput();
+        this.cliente.setId(cliente);
+    }
 
     public String getDescricao() {
         return descricao;
