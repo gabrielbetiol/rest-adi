@@ -16,8 +16,9 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/ordens-servico/{ordemServicoId}/comentarios")
+@RequestMapping("/api/ordens-servico/{ordemServicoId}/comentarios")
 public class ComentarioController {
 
     @Autowired
@@ -52,7 +53,7 @@ public class ComentarioController {
 
     private List<ComentarioDTO> toCollectionDTO(List<Comentario> comentarios) {
         return comentarios.stream()
-                .map(comentario -> toDTO(comentario))
+                .map(this::toDTO)
                 .collect(Collectors.toList());
     }
 }

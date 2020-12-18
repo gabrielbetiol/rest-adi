@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/clientes")
+@RequestMapping("/api/clientes")
 public class ClienteController {
 
     @Autowired
@@ -27,10 +27,7 @@ public class ClienteController {
     public ResponseEntity<Cliente> buscar(@PathVariable Long clienteId) {
         Optional<Cliente> cliente = cadastroClienteService.buscar(clienteId);
 
-        if (cliente.isPresent()) {
-            return ResponseEntity.ok(cliente.get());
-        }
-        return ResponseEntity.notFound().build();
+        return cliente.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping

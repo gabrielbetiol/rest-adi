@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/ordens-servico")
+@RequestMapping("/api/ordens-servico")
 public class OrdemServicoController {
 
     @Autowired
