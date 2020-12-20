@@ -1,5 +1,6 @@
 package com.curso.osworks.api.controller;
 
+import com.curso.osworks.api.model.ClienteLogin;
 import com.curso.osworks.domain.model.Cliente;
 import com.curso.osworks.domain.service.CadastroClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,13 @@ public class ClienteController {
     @GetMapping("/{clienteId}")
     public ResponseEntity<Cliente> buscar(@PathVariable Long clienteId) {
         Optional<Cliente> cliente = cadastroClienteService.buscar(clienteId);
+
+        return cliente.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/login/{clienteEmail}")
+    public ResponseEntity<Cliente> login(@PathVariable String clienteEmail) {
+        Optional<Cliente> cliente = cadastroClienteService.buscarPorEmail(clienteEmail);
 
         return cliente.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }

@@ -27,6 +27,10 @@ public class Cliente {
     private String email;
 
     @NotBlank
+    @Size(min = 6)
+    private String senha;
+
+    @NotBlank
     @Size(max = 20)
     @Column(name = "fone")
     private String telefone;
@@ -60,10 +64,13 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
     public String getTelefone() {
         return telefone;
     }
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
 }

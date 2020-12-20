@@ -1,5 +1,6 @@
 package com.curso.osworks.domain.service;
 
+import com.curso.osworks.api.model.ClienteLogin;
 import com.curso.osworks.domain.exception.NegocioException;
 import com.curso.osworks.domain.model.Cliente;
 import com.curso.osworks.domain.repository.ClienteRepository;
@@ -17,7 +18,7 @@ public class CadastroClienteService {
 
     public Cliente salvar(Cliente cliente) {
         Cliente clienteExistente = clienteRepository.findByEmail(cliente.getEmail());
-        if(clienteExistente != null && !clienteExistente.equals(cliente)) {
+        if (clienteExistente != null && !clienteExistente.equals(cliente)) {
             throw new NegocioException("Já existe um cliente cadastrado com esse e-mail");
         }
         return clienteRepository.save(cliente);
@@ -34,6 +35,10 @@ public class CadastroClienteService {
     public Optional<Cliente> buscar(Long clienteId) {
         return Optional.ofNullable(clienteRepository.findById(clienteId)
                 .orElseThrow(() -> new NegocioException("Cliente nao encontrado")));
+    }
+
+    public Optional<Cliente> buscarPorEmail(String clienteEmail) {
+        return Optional.ofNullable(clienteRepository.findByEmail(clienteEmail));
     }
 
     public boolean buscarPorId(Long clienteId) {
