@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 05-Dez-2020 às 01:43
--- Versão do servidor: 10.4.14-MariaDB
--- versão do PHP: 7.4.9
+-- Host: localhost
+-- Tempo de geração: 27/01/2021 às 16:12
+-- Versão do servidor: 10.4.13-MariaDB
+-- Versão do PHP: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
+-- Estrutura para tabela `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -35,10 +35,22 @@ CREATE TABLE `cliente` (
   `fone` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Despejando dados para a tabela `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `nome`, `email`, `senha`, `fone`) VALUES
+(2, 'joao updated', 'joao_up@email.com', '1234567', '12345678'),
+(3, 'joao', 'joao@email.com', '1234567', '12345678'),
+(4, 'Adriane', 'adriane@email', '12345678', '12345678'),
+(5, 'jose', 'jose@email.com', '12345678', '123456'),
+(6, 'pedro', 'pedro@email.com', '12345678', '12345678'),
+(7, 'josep', 'josep@email.com', '1234567', '123456');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `comentario`
+-- Estrutura para tabela `comentario`
 --
 
 CREATE TABLE `comentario` (
@@ -48,10 +60,17 @@ CREATE TABLE `comentario` (
   `data_envio` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Despejando dados para a tabela `comentario`
+--
+
+INSERT INTO `comentario` (`id`, `ordem_servico_id`, `descricao`, `data_envio`) VALUES
+(1, 1, 'Essa bagaça precisa ser consertada antes do natal.', '2020-12-23 17:43:38');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ordem_servico`
+-- Estrutura para tabela `ordem_servico`
 --
 
 CREATE TABLE `ordem_servico` (
@@ -65,63 +84,74 @@ CREATE TABLE `ordem_servico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Índices para tabelas despejadas
+-- Despejando dados para a tabela `ordem_servico`
+--
+
+INSERT INTO `ordem_servico` (`id`, `cliente_id`, `descricao`, `preco`, `status`, `data_abertura`, `data_finalizacao`) VALUES
+(1, 2, 'Instalar 2 cameras', '150.00', 'FINALIZADA', '2020-12-18 00:49:12', NULL),
+(2, 4, 'Reparo de placa mae', '150.00', 'ABERTA', '2020-12-20 02:55:11', NULL),
+(3, 3, 'Troca de interruptor', '50.20', 'CANCELADA', '2020-12-18 00:49:12', NULL),
+(4, 2, 'Limpeza do CPU', '137.82', 'FINALIZADA', '2020-12-20 02:55:11', '2020-12-25 14:47:00'),
+(5, 4, 'Instalar Tvs ', '35.68', 'ABERTA', '2020-12-24 17:40:52', NULL);
+
+--
+-- Índices de tabelas apagadas
 --
 
 --
--- Índices para tabela `cliente`
+-- Índices de tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `comentario`
+-- Índices de tabela `comentario`
 --
 ALTER TABLE `comentario`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_comentario_ordem_servico` (`ordem_servico_id`);
 
 --
--- Índices para tabela `ordem_servico`
+-- Índices de tabela `ordem_servico`
 --
 ALTER TABLE `ordem_servico`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_ordem_servico_cliente` (`cliente_id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `ordem_servico`
 --
 ALTER TABLE `ordem_servico`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para dumps de tabelas
 --
 
 --
--- Limitadores para a tabela `comentario`
+-- Restrições para tabelas `comentario`
 --
 ALTER TABLE `comentario`
   ADD CONSTRAINT `fk_comentario_ordem_servico` FOREIGN KEY (`ordem_servico_id`) REFERENCES `ordem_servico` (`id`);
 
 --
--- Limitadores para a tabela `ordem_servico`
+-- Restrições para tabelas `ordem_servico`
 --
 ALTER TABLE `ordem_servico`
   ADD CONSTRAINT `fk_ordem_servico_cliente` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`);
