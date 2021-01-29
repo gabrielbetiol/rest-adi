@@ -7,7 +7,7 @@ Banco de dados na pasta /src/main/resources.
 
 <table>
   <tr>
-    <td><img src="assets/clientes.jpg" width=300 height=520></td>
-    <td><img src="assets/ordens-servico.jpg" width=300 height=520></td>
+    <td><img src="assets/clientes.jpg" width=500 height=520></td>
+    <td><img src="assets/ordens-servico.jpg" width=500 height=520></td>
   </tr>
  </table>
