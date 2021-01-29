@@ -9,10 +9,10 @@ Banco de dados na pasta /src/main/resources.
 
 ### Clientes
 GET - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes - GET ALL </br>
-GET - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes/{clienteId} - GET ONE
-PUT - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes/{clienteId} - UPDATE ONE
-DEL - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes/{clienteId} - DELETE ONE
-POST - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes - INSERT ONE
+GET - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes/{clienteId} - GET ONE </br>
+PUT - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes/{clienteId} - UPDATE ONE </br>
+DEL - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes/{clienteId} - DELETE ONE </br>
+POST - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes - INSERT ONE </br>
      - body: {
                 "nome": <nome>,
                 "senha": <senha>,
@@ -21,10 +21,10 @@ POST - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/client
             }
 
 ### Ordens de Serviço
-GET -   https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/ordens-servico - GET ALL
-GET -   https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/ordens-servico/{ordemServicoId} - GET ONE
-PUT -   https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/ordens-servico/{ordemServicoId}/finalizacao - UPDATE (finaliza a O.S.)
-POST -  https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/ordens-servico/{ordemServicoId} - INSERT ONE
+GET -   https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/ordens-servico - GET ALL </br>
+GET -   https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/ordens-servico/{ordemServicoId} - GET ONE </br>
+PUT -   https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/ordens-servico/{ordemServicoId}/finalizacao - UPDATE (finaliza a O.S.) </br>
+POST -  https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/ordens-servico/{ordemServicoId} - INSERT ONE </br>
      -  body: {
                 "cliente": <clienteID>,
                 "descricao": <descrição>,
