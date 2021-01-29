@@ -8,7 +8,7 @@ Banco de dados na pasta /src/main/resources.
 ## Rotas
 
 ### Clientes
-GET - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes - GET ALL
+GET - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes - GET ALL </br>
 GET - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes/{clienteId} - GET ONE
 PUT - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes/{clienteId} - UPDATE ONE
 DEL - https://osworks-spring-cloud-osworks-api.azuremicroservices.io/api/clientes/{clienteId} - DELETE ONE
